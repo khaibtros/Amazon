@@ -63,6 +63,9 @@ export function updateQuantity(productId, newQuantity) {
     });
 
     matchingItem.quantity = newQuantity;
-    
+
     saveToStorage();
 }
+
+       
+
