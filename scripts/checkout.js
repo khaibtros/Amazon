@@ -95,5 +95,22 @@ document.querySelectorAll('.js-delete-link').forEach((link) => {
         removeFromCart(productId);
         const container = document.querySelector(`.js-cart-item-container-${productId}`);
         container.remove();
+        updateCartQuantity();
     });
 });
+
+function updateCartQuantity() {
+    let cartQuantity = 0;
+
+    cart.forEach((cartItem) => {
+        cartQuantity += cartItem.quantity;
+    });
+
+    if (cartQuantity === 1 || cartQuantity === 0) {
+        document.querySelector('.js-return-to-home-link').innerHTML = `${cartQuantity} item`;
+    } else {
+        document.querySelector('.js-return-to-home-link').innerHTML = `${cartQuantity} items`;
+    }
+}
+
+updateCartQuantity();
