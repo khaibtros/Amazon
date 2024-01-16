@@ -8,7 +8,7 @@ export function saveToStorage() {
     localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-export function addToCart(productId) {
+export function addToCart(productId, selectedQuantity) {
     let matchingItem;    
 
     cart.forEach((cartItem) => {
@@ -18,11 +18,11 @@ export function addToCart(productId) {
     });
 
     if (matchingItem) {
-        matchingItem.quantity += 1;
+        matchingItem.quantity += selectedQuantity;
     } else {
         cart.push({
         productId: productId,
-        quantity: 1
+        quantity: selectedQuantity
         });
     }
 
