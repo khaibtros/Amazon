@@ -21,7 +21,7 @@ export function addToCart(productId, selectedQuantity) {
         matchingItem.quantity += selectedQuantity;
     } else {
         cart.push({
-        productId: productId,
+        productId,
         quantity: selectedQuantity
         });
     }
