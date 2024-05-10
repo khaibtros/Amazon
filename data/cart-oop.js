@@ -70,20 +70,6 @@ function Cart(localStorageKey) {
             return cartQuantity;
         },
         
-        updateQuantity(productId, newQuantity) {
-            let matchingItem;
-        
-            this.cartItems.forEach((cartItem) => {
-            if (cartItem.productId === productId) {
-                matchingItem = cartItem;
-            }
-            });
-        
-            matchingItem.quantity = newQuantity;
-        
-            this.saveToStorage();
-        },
-        
         updateDeliveryOption(productId, deliveryOptionId) {
             let matchingItem;
         
