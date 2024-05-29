@@ -73,7 +73,7 @@ async function loadPage() {
         </div>
       `;
     });
-    
+
     return productsListHTML;
   }
 
@@ -87,8 +87,11 @@ async function loadPage() {
         button.innerHTML = `<img class="buy-again-icon" src="images/icons/buy-again.png">
                             <span class="buy-again-message">Buy it again</span>`
       }, 1000);
+
+      document.querySelector('.js-cart-quantity').innerHTML = cart.calculateCartQuantity();
     });
   });
+  document.querySelector('.js-cart-quantity').innerHTML = cart.calculateCartQuantity();
 }
 
 loadPage();
