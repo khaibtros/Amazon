@@ -97,6 +97,11 @@ class Cart {
     
         this.saveToStorage();
     }
+
+    resetCart() {
+        this.cartItems = [];
+        this.saveToStorage();
+    }
 }
 
 export const cart = new Cart('cart-oop');
