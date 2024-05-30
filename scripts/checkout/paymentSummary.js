@@ -60,23 +60,26 @@ export function renderPaymentSummary() {
   document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHTML;
   document.querySelector('.js-place-order').addEventListener('click', async () => {
     try {
-      const response = await fetch('https://supersimplebackend.dev/orders', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          cart: cart
-        })
-      });
+      if (cart.cartItems.length > 0) {
+        const response = await fetch('https://supersimplebackend.dev/orders', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            cart: cart.cartItems
+          })
+        });
 
-      const order = await response.json();
-      addOrder(order);
+        const order = await response.json();
+        addOrder(order);
+        cart.resetCart();
+        window.location.href = 'orders.html';
+      } else {
+        alert('You cannot make an empty order');
+      }
     } catch (error) {
       console.log('Unexpected error. Try again later');
     }
-
-    cart.resetCart();
-    window.location.href = 'orders.html';
   });
 }
