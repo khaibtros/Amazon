@@ -42,6 +42,8 @@ async function loadPage() {
 
     order.products.forEach((productDetails) => {
       const product = getProduct(productDetails.productId);
+      const today = dayjs();
+      const deliveryTime = dayjs(productDetails.estimatedDeliveryTime);
 
       productsListHTML += `
         <div class="product-image-container">
@@ -52,8 +54,8 @@ async function loadPage() {
             ${product.name}
           </div>
           <div class="product-delivery-date">
-            Arriving on: ${
-              dayjs(productDetails.estimatedDeliveryTime).format('MMMM D')
+            ${today < deliveryTime ? 'Arriving on' : 'Delivered on'}: ${
+              deliveryTime.format('MMMM D')
             }
           </div>
           <div class="product-quantity">

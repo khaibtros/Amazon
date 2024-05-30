@@ -29,7 +29,7 @@ async function loadPage() {
         </a>
 
         <div class="delivery-date">
-            Arriving on ${deliveryTime.format('dddd, MMMM D')}
+            ${today < deliveryTime ? 'Arriving on' : 'Delivered on'} ${deliveryTime.format('dddd, MMMM D')}
 
         <div class="product-info">
             ${product.name}
